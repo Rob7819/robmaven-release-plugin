@@ -29,8 +29,11 @@
         </repository>
         <!--The following can be replaced by using a mirror to a group which contains
         the repositories below.  The mirror has already been specified in settings.xml.
-        This simply demonstrates there is another way to use repositories which may be
-        beneficial depending on the scope and size of project(s)...-->
+        We need to be careful and make sure the mirror is always up (depending on
+        profile/repository settings), otherwise we'll need to use mirrorOf exceptions
+        to avoid problems with dependencies.  This simply demonstrates there is another
+        way to use repositories which may be beneficial depending on the scope and size
+        of project(s)...-->
         <!--<repository>
             <id>nexus-snapshot</id>
             <url>http://localhost:8081/repository/nexus-snapshot/</url>
@@ -111,9 +114,6 @@
                     <url>http://localhost:8081/repository/nexus-release/</url>
                 </repository>
             </distributionManagement>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
         </profile>
     </profiles>
 
