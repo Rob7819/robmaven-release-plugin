@@ -4,9 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>rob.oracletest</groupId>
-    <artifactId>rjb-ot-maven</artifactId>
-    <version>1.0-RELEASE</version>
+    <groupId>rob.maventest</groupId>
+    <artifactId>rjb-maven-release</artifactId>
+    <version>1.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <junit.version>5.3.2</junit.version>
+        <project.scm.id>github</project.scm.id>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -14,7 +24,24 @@
             <artifactId>ojdbc8</artifactId>
             <version>18.3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/Rob7819/robmaven-release-plugin.git</developerConnection>
+        <url>https://github.com/Rob7819/robmaven-release-plugin</url>
+    </scm>
 
     <repositories>
         <repository>
@@ -72,6 +99,18 @@
                 <version>0.0.6</version>
             </extension>
         </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>
+        </plugins>
     </build>
 
     <distributionManagement>
@@ -114,6 +153,9 @@
                     <url>http://localhost:8081/repository/nexus-release/</url>
                 </repository>
             </distributionManagement>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
         </profile>
     </profiles>
 
