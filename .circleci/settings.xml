@@ -5,28 +5,6 @@
 
     <servers>
         <server>
-            <id>maven.oracle.com</id>
-            <username>${env.USER}</username>
-            <password>${env.ORACLE}</password>
-            <configuration>
-                <basicAuthScope>
-                    <host>ANY</host>
-                    <port>ANY</port>
-                    <realm>OAM 11g</realm>
-                </basicAuthScope>
-                <httpConfiguration>
-                    <all>
-                        <params>
-                            <property>
-                                <name>http.protocol.allow-circular-redirects</name>
-                                <value>%b,true</value>
-                            </property>
-                        </params>
-                    </all>
-                </httpConfiguration>
-            </configuration>
-        </server>
-        <server>
             <id>packagecloud.release</id>
             <password>${env.PCLOUD}</password>
         </server>
@@ -36,22 +14,4 @@
         </server>
     </servers>
 
-    <profiles>
-        <profile>
-            <id>jboss</id>
-            <repositories>
-                <repository>
-                    <id>redhat-ga</id>
-                    <url>https://maven.repository.redhat.com/ga/</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
-
-    <activeProfiles>
-        <activeProfile>jboss</activeProfile>
-    </activeProfiles>
 </settings>
