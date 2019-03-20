@@ -41,10 +41,11 @@
         <developerConnection>scm:git:https://github.com/Rob7819/robmaven-release-plugin.git</developerConnection>
         <url>https://github.com/Rob7819/robmaven-release-plugin</url>
       <tag>rjb-maven-release-1.1</tag>
-  </scm>
+    </scm>
 
     <repositories>
-        <repository>
+        <!-- disabling for CircleCI build -->
+        <!--<repository>
             <id>maven.oracle.com</id>
             <name>oracle-maven-repo</name>
             <url>https://maven.oracle.com</url>
@@ -53,7 +54,7 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </releases>
-        </repository>
+        </repository>-->
         <!--The following can be replaced by using a mirror to a group which contains
         the repositories below.  The mirror has already been specified in settings.xml.
         We need to be careful and make sure the mirror is always up (depending on
@@ -79,7 +80,8 @@
     </repositories>
 
     <pluginRepositories>
-        <pluginRepository>
+        <!-- disabling for CircleCI build -->
+        <!--<pluginRepository>
             <id>maven.oracle.com</id>
             <name>oracle-maven-repo</name>
             <url>https://maven.oracle.com</url>
@@ -88,7 +90,7 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </releases>
-        </pluginRepository>
+        </pluginRepository>-->
     </pluginRepositories>
 
     <build>
