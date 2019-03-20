@@ -17,12 +17,6 @@
     </properties>
 
     <dependencies>
-        <!-- disabling dependency for CircleCI build -->
-        <!--<dependency>
-            <groupId>com.oracle.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>18.3.0.0</version>
-        </dependency>-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -44,54 +38,15 @@
     </scm>
 
     <repositories>
-        <!-- disabling for CircleCI build -->
-        <!--<repository>
-            <id>maven.oracle.com</id>
-            <name>oracle-maven-repo</name>
-            <url>https://maven.oracle.com</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-        </repository>-->
-        <!--The following can be replaced by using a mirror to a group which contains
-        the repositories below.  The mirror has already been specified in settings.xml.
-        We need to be careful and make sure the mirror is always up (depending on
-        profile/repository settings), otherwise we'll need to use mirrorOf exceptions
-        to avoid problems with dependencies.  This simply demonstrates there is another
-        way to use repositories which may be beneficial depending on the scope and size
-        of project(s)...-->
-        <!--<repository>
-            <id>nexus-snapshot</id>
-            <url>http://localhost:8081/repository/nexus-snapshot/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>nexus-release</id>
-            <url>http://localhost:8081/repository/nexus-release/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-        </repository>-->
-    </repositories>
+        <!--The nexus repositories can be replaced by using a mirror to a group which contains
+        both nexus repositories.  The mirror has already been specified in settings.xml and
+        a profile is being used to manage nexus dependencies.  We need to be careful and make
+        sure the mirror is always up (depending on profile/repository settings), otherwise
+        we'll need to use mirrorOf exceptions to avoid problems with dependencies while nexus is
+        not in use.  This simply demonstrates there is another way to use repositories which may
+        be beneficial depending on the scope and size of project(s)...-->
 
-    <pluginRepositories>
-        <!-- disabling for CircleCI build -->
-        <!--<pluginRepository>
-            <id>maven.oracle.com</id>
-            <name>oracle-maven-repo</name>
-            <url>https://maven.oracle.com</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </releases>
-        </pluginRepository>-->
-    </pluginRepositories>
+    </repositories>
 
     <build>
         <extensions>
@@ -155,6 +110,45 @@
                     <url>http://localhost:8081/repository/nexus-release/</url>
                 </repository>
             </distributionManagement>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <!-- Taken from main section(s) of pom to accommodate CircleCI builds -->
+            <id>oracle_jdbc</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.oracle.jdbc</groupId>
+                    <artifactId>ojdbc8</artifactId>
+                    <version>18.3.0.0</version>
+                </dependency>
+            </dependencies>
+            <repositories>
+                <repository>
+                    <id>maven.oracle.com</id>
+                    <name>oracle-maven-repo</name>
+                    <url>https://maven.oracle.com</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>maven.oracle.com</id>
+                    <name>oracle-maven-repo</name>
+                    <url>https://maven.oracle.com</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases>
+                </pluginRepository>
+            </pluginRepositories>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
