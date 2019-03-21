@@ -4,7 +4,7 @@
 
     <groupId>rob.maventest</groupId>
     <artifactId>rjb-maven-release</artifactId>
-    <version>1.2</version>
+    <version>1.3-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +34,7 @@
     <scm>
         <developerConnection>scm:git:https://github.com/Rob7819/robmaven-release-plugin.git</developerConnection>
         <url>https://github.com/Rob7819/robmaven-release-plugin</url>
-      <tag>rjb-maven-release-1.2</tag>
+      <tag>rjb-maven-release-1.1</tag>
     </scm>
 
     <repositories>
