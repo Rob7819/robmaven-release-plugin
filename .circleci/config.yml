@@ -37,6 +37,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
+      - run: git config -l
       - run: git config --global user.email $(env.USER)
       - run: git config --global user.password $(env.GIT_PWD)
       # run tests!
