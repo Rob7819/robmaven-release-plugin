@@ -38,7 +38,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       - run: git config -l
-      - run: git config --global user.email $(env.USER)
-      - run: git config --global user.password $(env.GIT_PWD)
+      - run: git config --global user.email $(USER)
+      - run: git config --global user.password $(GIT_PWD)
       # run tests!
       - run: mvn --batch-mode release:prepare release:perform -s .circleci/settings.xml
