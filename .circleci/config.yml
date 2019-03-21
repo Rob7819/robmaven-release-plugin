@@ -37,8 +37,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run: git config -l
-      - run: git config --global user.email $(USER)
-      - run: git config --global user.password $(GIT_PWD)
+      - run: git config user.email "rjboyce@teksavvy.com"
+      - run: git config user.name "Rob7819"
       # run tests!
       - run: mvn --batch-mode release:prepare release:perform -s .circleci/settings.xml
